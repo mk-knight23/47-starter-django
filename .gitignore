@@ -18,3 +18,5 @@ venv/
 .pytest_cache/
 .mypy_cache/
 db.sqlite3
+.vercel
+.env*.local

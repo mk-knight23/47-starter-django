@@ -160,7 +160,7 @@ function App() {
                             </button>
                         ))}
                     </div>
-                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.4em]">© 2024 MK_PYSTACK_HUB • 22/30 DISPATCHED</p>
+                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.4em]">© 2026 PYSTACK // BACKEND • 22/30 DISPATCHED</p>
                 </div>
             </footer>
         </div>
