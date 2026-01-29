@@ -8,5 +8,5 @@ export default defineConfig({
         react(),
         tailwindcss(),
     ],
-    base: process.env.VERCEL || process.env.NETLIFY ? './' : '/22-django-starter/',
+    base: process.env.VERCEL || process.env.NETLIFY ? './' : '/47-starter-django/',
 })
