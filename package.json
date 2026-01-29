@@ -5,7 +5,7 @@
     "description": "Full-stack Django/React starter modernized with React 19, Vite 6, and Tailwind CSS v4. Enterprise/Corporate SaaS theme.",
     "type": "module",
     "scripts": {
-    "lint": "eslint .",
+        "lint": "eslint .",
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
@@ -25,16 +25,12 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mk-knight23/22-django-starter.git"
-    },
-    "homepage": "https://mk-knight23.github.io/47-starter-django/",
-    "repository": {
-        "type": "git",
         "url": "git+https://github.com/mk-knight23/47-starter-django.git"
     },
+    "homepage": "https://mk-knight23.github.io/47-starter-django/",
     "devDependencies": {
         "@tailwindcss/vite": "^4.1.18",
-        "@types/react": "^19.2.9",
+        "@types/react": "^19.2.10",
         "@types/react-dom": "^19.2.3",
         "@vitejs/plugin-react": "^4.7.0",
         "autoprefixer": "^10.4.23",
@@ -43,5 +39,11 @@
         "tailwindcss": "^4.0.0",
         "typescript": "^5.9.3",
         "vite": "^6.4.1"
+    },
+    "dependencies": {
+        "framer-motion": "^12.29.2",
+        "lucide-react": "^0.563.0",
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4"
     }
 }
