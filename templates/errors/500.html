@@ -1,0 +1,58 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}500 - Server Error{% endblock %}
+
+{% block content %}
+<style>
+    .error-page {
+        text-align: center;
+        padding: 100px 20px;
+    }
+    .error-code {
+        font-size: 120px;
+        font-weight: bold;
+        color: #dc2626;
+        line-height: 1;
+    }
+    .error-message {
+        font-size: 24px;
+        color: #64748b;
+        margin-top: 20px;
+    }
+    .error-description {
+        font-size: 16px;
+        color: #94a3b8;
+        margin-top: 10px;
+    }
+    .error-actions {
+        margin-top: 40px;
+    }
+    .error-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #3b82f6;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+    }
+    .error-btn:hover {
+        background-color: #1e3a8a;
+        color: white;
+    }
+</style>
+
+<div class="error-page">
+    <div class="error-code">500</div>
+    <div class="error-message">Server Error</div>
+    <div class="error-description">
+        Something went wrong on our end. Please try again later.
+    </div>
+    <div class="error-actions">
+        <a href="/" class="error-btn">Go to Homepage</a>
+        <a href="/admin/" class="error-btn" style="margin-left: 10px;">Go to Admin</a>
+    </div>
+</div>
+{% endblock %}

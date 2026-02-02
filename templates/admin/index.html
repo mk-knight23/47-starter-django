@@ -1,0 +1,60 @@
+{% extends "admin/index.html" %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+    .dashboard-welcome {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+    }
+
+    .dashboard-welcome h1 {
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .dashboard-welcome p {
+        color: rgba(255,255,255,0.9);
+        margin: 0;
+    }
+
+    .quick-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .quick-action-btn {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .quick-action-btn:hover {
+        background: rgba(255,255,255,0.3);
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+
+<div class="dashboard-welcome">
+    <h1>Welcome to Django Starter 🚀</h1>
+    <p>A professional Django starter with React frontend, custom user model, role-based access control, and more.</p>
+    <div class="quick-actions">
+        <a href="{% url 'admin:users_user_add' %}" class="quick-action-btn">+ Add User</a>
+        <a href="{% url 'admin:apps_blog_post_add' %}" class="quick-action-btn">+ Add Post</a>
+        <a href="/api/" class="quick-action-btn">📡 API Docs</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,3 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+db.sqlite3-wal
+db.sqlite3-shm
+/media/
+/staticfiles/
+/static/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+.Trash
+
+# Node.js
 node_modules/
 .next/
 .vercel/
@@ -5,23 +68,35 @@ dist/
 build/
 coverage/
 *.log
-.env*
 package-lock.json
-.DS_Store
-Thumbs.db
-.Trash
-__pycache__/
-.venv/
-env/
-venv/
-*.pyc
-.pytest_cache/
-.mypy_cache/
-db.sqlite3
-.vercel
-.env*.local
 
-# Security - env files
+# Environment files (keep .env.example)
+.env
 .env.local
 .env.*.local
 .env.production
+
+# Security - NEVER commit these
+*.pem
+*.key
+*.cert
+*.crt
+secrets/
+
+# Static files (generated)
+static/CSS/
+static/JS/
+
+# Media files (user uploads)
+media/
+
+# Logs
+logs/
+*.log
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Redis dumps
+dump.rdb
