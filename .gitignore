@@ -100,3 +100,4 @@ celerybeat.pid
 
 # Redis dumps
 dump.rdb
+.vercel

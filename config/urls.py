@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 urlpatterns = [
     # Admin
@@ -13,6 +14,7 @@ urlpatterns = [
 
     # API: Auth
     path('api/auth/', include('dj_rest_auth.urls')),
+    path('api/auth/', include('rest_framework_simplejwt.urls')),
     # path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # Disabled - incompatible with username-less User model
 
     # API: Blog
@@ -20,6 +22,11 @@ urlpatterns = [
 
     # API: Users
     path('api/users/', include('users.urls')),
+
+    # API: Schema & Documentation
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
 # Static and media files in development

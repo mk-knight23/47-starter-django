@@ -55,6 +55,9 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth',
+    'rest_framework_simplejwt',
+    'drf_spectacular',
+    'django_filters',
     # 'dj_rest_auth.registration',  # Disabled - incompatible with username-less User model
 ]
 
@@ -122,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # REST Framework Authentication
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
@@ -134,14 +137,57 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # Django REST Auth
 REST_AUTH = {
     'SESSION_LOGIN': True,
-    'USE_JWT': False,
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': 'jwt-auth',
     'PASSWORD_CONFIRM': True,
     # 'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',  # Disabled - incompatible with username-less User model
+}
+
+# Simple JWT Settings
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'TOKEN_USER_CLASS': 'users.models.User',
+}
+
+# drf-spectacular Settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Django Starter API',
+    'DESCRIPTION': 'A professional Django REST API with JWT authentication',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SCHEMA_PATH_PREFIX': '/api/',
+    'COMPONENT_SPLIT_REQUEST': True,
+    'TAGS': [
+        {'name': 'Authentication', 'description': 'Login, logout, and token management'},
+        {'name': 'Users', 'description': 'User management and profiles'},
+        {'name': 'Blog', 'description': 'Blog posts, categories, tags, and comments'},
+    ],
 }
 
 # Django Allauth
