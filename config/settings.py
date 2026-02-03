@@ -31,7 +31,7 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # CSRF Trusted Origins (required for HTTPS)
-CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', default=list)
+CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', default=[])
 
 # =============================================================================
 # APPLICATION DEFINITION
@@ -55,7 +55,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth',
-    'dj_rest_auth.registration',
+    # 'dj_rest_auth.registration',  # Disabled - incompatible with username-less User model
 ]
 
 LOCAL_APPS = [
@@ -134,6 +134,14 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+}
+
+# Django REST Auth
+REST_AUTH = {
+    'SESSION_LOGIN': True,
+    'USE_JWT': False,
+    'PASSWORD_CONFIRM': True,
+    # 'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',  # Disabled - incompatible with username-less User model
 }
 
 # Django Allauth

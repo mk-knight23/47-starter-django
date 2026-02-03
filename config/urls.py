@@ -13,7 +13,7 @@ urlpatterns = [
 
     # API: Auth
     path('api/auth/', include('dj_rest_auth.urls')),
-    path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
+    # path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # Disabled - incompatible with username-less User model
 
     # API: Blog
     path('api/blog/', include('apps.blog.urls')),

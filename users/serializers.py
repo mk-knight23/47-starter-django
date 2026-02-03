@@ -2,7 +2,26 @@
 Serializers for User model and API endpoints.
 """
 from rest_framework import serializers
+# from dj_rest_auth.registration.serializers import RegisterSerializer  # Disabled - incompatible with username-less User model
 from .models import User, UserProfile
+
+
+# class CustomRegisterSerializer(RegisterSerializer):
+#     """Custom registration serializer for email-only authentication."""
+#
+#     username = None  # Remove username field
+#
+#     def validate(self, attrs):
+#         """Validate registration data without username."""
+#         # Remove username from attrs if present
+#         attrs.pop('username', None)
+#         return super().validate(attrs)
+#
+#     def get_cleaned_data(self):
+#         """Return cleaned data without username."""
+#         data = super().get_cleaned_data()
+#         data.pop('username', None)
+#         return data
 
 
 class UserSerializer(serializers.ModelSerializer):
