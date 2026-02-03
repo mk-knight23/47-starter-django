@@ -341,8 +341,9 @@ MIT License - see LICENSE file for details
 
 ## Live Demo
 
-- **Frontend**: Coming soon
-- **API**: Coming soon
+- **Vercel**: https://47-starter-django.vercel.app ✓
+- **Cloudflare Pages**: https://47-starter-django.pages.dev ✓
+- **Note**: Backend API requires Python deployment (Render/Railway recommended)
 
 ## Support
 
