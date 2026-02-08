@@ -342,8 +342,28 @@ MIT License - see LICENSE file for details
 ## Live Demo
 
 - **Vercel**: https://47-starter-django.vercel.app ✓
-- **Cloudflare Pages**: https://47-starter-django.pages.dev ✓
+- **Firebase**: https://web-apps-7e3fa.web.app ✓
+- **Cloudflare Pages**: https://322004fa.django-starter.pages.dev ✓
 - **Note**: Backend API requires Python deployment (Render/Railway recommended)
+
+## Deployment URLs
+
+| Platform | URL | Status |
+|----------|-----|--------|
+| Vercel | https://47-starter-django.vercel.app | ✓ Active |
+| Firebase | https://web-apps-7e3fa.web.app | ✓ Active |
+| Cloudflare Pages | https://322004fa.django-starter.pages.dev | ✓ Active |
+
+## Deployment Configuration
+
+This project includes deployment configurations for multiple platforms:
+
+- `vercel.json` - Vercel static hosting configuration
+- `firebase.json` - Firebase Hosting configuration
+- `wrangler.toml` - Cloudflare Pages configuration
+- `render.yaml` - Render web service blueprint (validated)
+- `amplify.yml` - AWS Amplify configuration
+- `azure-static-web-apps.yml` - Azure Static Web Apps configuration
 
 ## Support
 

@@ -19,8 +19,10 @@ env = environ.Env(
     CORS_ALLOWED_ORIGINS=(list, ['http://localhost:5173', 'http://127.0.0.1:5173']),
 )
 
-# Read .env file - use .env.local for local development
-environ.Env.read_env(BASE_DIR / '.env.local')
+# Read .env file - use .env.local for local development if it exists
+env_file = BASE_DIR / '.env.local'
+if env_file.exists():
+    environ.Env.read_env(env_file)
 
 # =============================================================================
 # CORE SETTINGS
@@ -58,6 +60,7 @@ THIRD_PARTY_APPS = [
     'rest_framework_simplejwt',
     'drf_spectacular',
     'django_filters',
+    # 'ratelimit',
     # 'dj_rest_auth.registration',  # Disabled - incompatible with username-less User model
 ]
 
@@ -173,6 +176,38 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
     'TOKEN_USER_CLASS': 'users.models.User',
+}
+
+# Rate Limiting Settings
+RATELIMIT_USE_CACHE = 'default'
+RATELIMIT_CACHE_PREFIX = 'rl'
+RATELIMIT_ENABLE = True
+
+# Custom rate limit configuration
+RATE_LIMITED_VIEW_EXCEPTIONS = []
+
+# Rate limits for different user types
+RATE_LIMITS = {
+    'api-auth': {
+        'anonymous': '100/hour',
+        'authenticated': '1000/hour',
+        'staff': '5000/hour',
+    },
+    'api-blog': {
+        'anonymous': '100/minute',
+        'authenticated': '1000/minute',
+        'staff': '10000/minute',
+    },
+    'api-users': {
+        'anonymous': '50/minute',
+        'authenticated': '1000/minute',
+        'staff': '10000/minute',
+    },
+    'default': {
+        'anonymous': '100/hour',
+        'authenticated': '1000/hour',
+        'staff': '5000/hour',
+    },
 }
 
 # drf-spectacular Settings

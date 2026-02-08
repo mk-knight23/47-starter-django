@@ -1,60 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1e40af" />
-
-    <!-- Primary Meta Tags -->
-    <title>NEXUS | Enterprise Management Platform</title>
-    <meta name="title" content="NEXUS | Enterprise Management Platform">
-    <meta name="description"
-        content="Enterprise-grade management platform for modern organizations. Track projects, manage clients, and grow your business with powerful analytics and intuitive workflows.">
-    <meta name="keywords"
-        content="enterprise software, management platform, business analytics, project management, client portal, saas">
-    <meta name="author" content="Kazi Musharraf">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mk-knight23.github.io/47-starter-django/">
-    <meta property="og:title" content="NEXUS | Enterprise Management Platform">
-    <meta property="og:description"
-        content="Enterprise-grade management platform for modern organizations.">
-    <meta property="og:image" content="https://mk-knight23.github.io/47-starter-django/nexus-ss.png">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://mk-knight23.github.io/47-starter-django/">
-    <meta name="twitter:title" content="NEXUS | Enterprise Management Platform">
-    <meta name="twitter:description"
-        content="Enterprise-grade management platform for modern organizations.">
-    <meta name="twitter:image" content="https://mk-knight23.github.io/47-starter-django/nexus-ss.png">
-
-    <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="manifest" href="/manifest.json" />
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "NEXUS",
-        "operatingSystem": "Web",
-        "applicationCategory": "BusinessApplication",
-        "url": "https://mk-knight23.github.io/47-starter-django/"
-    }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Starter</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        .notice {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
 </head>
-
-<body class="bg-slate-50 text-slate-900 antialiased font-sans">
-    <a href="#root"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-64 focus:z-[200] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg">Skip
-        to main</a>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+<body>
+    <div class="container">
+        <h1>Django Starter</h1>
+        <p>A production-ready Django REST API with JWT authentication</p>
+        <div class="links">
+            <a href="/api/docs/" class="link">API Documentation</a>
+            <a href="/api/health/" class="link">Health Check</a>
+            <a href="/admin/" class="link">Admin Panel</a>
+        </div>
+        <div class="badge">Django 5.1 + DRF + JWT Auth</div>
+        <div class="notice">
+            <p>Static Hosting Version</p>
+            <p>For full API functionality, use the backend deployment</p>
+        </div>
+    </div>
 </body>
-
 </html>

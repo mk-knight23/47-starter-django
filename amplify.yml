@@ -1,0 +1,27 @@
+# AWS Amplify configuration for Django Starter
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - pip install -r requirements.txt
+        - python manage.py collectstatic --noinput
+        - python manage.py migrate
+  environment:
+    DJANGO_SETTINGS_MODULE: config.settings
+    PYTHONPATH: .
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "No frontend build needed for Django API"
+    build:
+      commands:
+        - echo "Static files already collected"
+  artifacts:
+    baseDirectory: staticfiles
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .venv/**/*

@@ -7,14 +7,21 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from config import views
 
 urlpatterns = [
+    # Home page
+    path('', views.home, name='home'),
+
+    # Health check (must be first for load balancers)
+    path('api/health/', views.health_check, name='health-check'),
+
     # Admin
     path('admin/', admin.site.urls),
 
     # API: Auth
     path('api/auth/', include('dj_rest_auth.urls')),
-    path('api/auth/', include('rest_framework_simplejwt.urls')),
+    # JWT URLs - conditionally imported
     # path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # Disabled - incompatible with username-less User model
 
     # API: Blog

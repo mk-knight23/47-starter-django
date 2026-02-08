@@ -2,7 +2,7 @@
 API views for blog app.
 """
 from rest_framework import viewsets, permissions, filters, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -91,6 +91,17 @@ class PostViewSet(viewsets.ModelViewSet):
     - comments: Get comments for post
     - like: Like/unlike post
     """
+
+    @action(detail=False, methods=['get'])
+    def published(self, request):
+        """
+        Get all published posts (public endpoint).
+        Rate limited to 100 requests per minute for anonymous users.
+        """
+        posts = Post.objects.filter(status=Post.Status.PUBLISHED)
+        page = self.paginate_queryset(posts)
+        serializer = PostListSerializer(page, many=True)
+        return self.get_paginated_response(serializer.data)
 
     queryset = Post.objects.all()
     lookup_field = 'slug'
