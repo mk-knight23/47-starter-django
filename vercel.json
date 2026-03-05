@@ -1,11 +1,20 @@
 {
   "version": 2,
-  "buildCommand": null,
-  "outputDirectory": ".",
+  "name": "starter-django",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/$1"
     }
-  ]
+  ],
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  }
 }

@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "staticfiles",
+    "site": "starter-django",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -10,6 +11,17 @@
       {
         "source": "**",
         "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000"
+          }
+        ]
       }
     ]
   }
