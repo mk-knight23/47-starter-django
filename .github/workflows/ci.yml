@@ -1,10 +1,75 @@
 name: CI
-on: { push: { branches: [main] }, pull_request: { branches: [main] } }
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
 jobs:
-  build:
+  quality:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
-      - run: pip install -r requirements.txt 2>/dev/null || echo 'No requirements'
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      if: hashFiles('package.json') != ''
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+    
+    - name: Setup Python
+      if: hashFiles('requirements.txt') != '' || hashFiles('pyproject.toml') != ''
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+    
+    - name: Install Node Dependencies
+      if: hashFiles('package.json') != ''
+      run: npm ci
+    
+    - name: Install Python Dependencies
+      if: hashFiles('requirements.txt') != ''
+      run: pip install -r requirements.txt
+    
+    - name: Run Linter
+      run: |
+        if [ -f package.json ]; then npm run lint; fi
+        if [ -f requirements.txt ]; then flake8 .; fi
+      continue-on-error: true
+    
+    - name: Run Tests
+      run: |
+        if [ -f package.json ]; then npm test; fi
+        if [ -f requirements.txt ]; then pytest; fi
+      continue-on-error: true
+    
+    - name: Build
+      run: |
+        if [ -f package.json ]; then npm run build; fi
+      continue-on-error: true
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run npm audit
+      if: hashFiles('package.json') != ''
+      run: npm audit --audit-level=moderate
+      continue-on-error: true
+    
+    - name: Run pip audit
+      if: hashFiles('requirements.txt') != ''
+      run: |
+        pip install pip-audit
+        pip-audit
+      continue-on-error: true
+    
+    - name: CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      continue-on-error: true
