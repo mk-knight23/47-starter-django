@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "starter-django",
   "builds": [
     {
       "src": "package.json",
@@ -12,9 +11,5 @@
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ],
-  "github": {
-    "enabled": true,
-    "autoAlias": true
-  }
+  ]
 }
