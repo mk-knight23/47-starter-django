@@ -24,7 +24,7 @@ django-filter>=24.0.0
 
 # Development Tools
 django-debug-toolbar>=4.4.0
-django-extensions>=3.2.0
+django-extensions>=4.1
 
 # Utilities
 Pillow>=11.0.0
