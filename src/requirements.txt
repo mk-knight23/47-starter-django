@@ -1,7 +1,7 @@
 # Django Starter Dependencies
 Django>=4.2
 djangorestframework>=3.14
-django-cors-headers>=4.0
+django-cors-headers>=4.9.0
 celery>=5.3
 redis>=5.0
 psycopg2-binary>=2.9
