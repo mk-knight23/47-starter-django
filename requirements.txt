@@ -14,7 +14,7 @@ gunicorn>=23.0.0
 uvicorn[standard]>=0.34.0
 
 # Security & Authentication
-django-allauth>=65.0.0
+django-allauth>=65.16.1
 dj-rest-auth>=6.0.0
 djangorestframework-simplejwt>=5.3.0
 
